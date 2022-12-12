@@ -7,13 +7,9 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
-  ignoreDifferences:
-  - group: apps
-    kind: Deployment
-    jsonPointers:
-    - /spec/replicas
+
   source:
-    repoURL: https://github.com/codefresh-contrib/gitops-cert-level-2-examples.git
+    repoURL: https://github.com/pmeleroa/gitops-cert-level-2-examples.git
     targetRevision: HEAD
     path: ./custom-diff/01-with-hpa
    
@@ -25,3 +21,9 @@ spec:
   syncPolicy:
     syncOptions:
       - CreateNamespace=true  
+
+  ignoreDifferences:
+  - group: apps
+    kind: Deployment
+    jsonPointers:
+    - /spec/replicas      
